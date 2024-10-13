@@ -1,0 +1,17 @@
+{
+  "name": "audio-analyzer",
+  "main": "app/app.js",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@nativescript/core": "~8.8.0",
+    "@nativescript/theme": "~3.0.2",
+    "nativescript-audio": "^6.2.2",
+    "nativescript-mediafilepicker": "^4.0.2"
+  },
+  "devDependencies": {
+    "@nativescript/android": "8.8.0",
+    "@nativescript/ios": "8.8.0",
+    "@nativescript/webpack": "~5.0.18"
+  }
+}

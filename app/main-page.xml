@@ -1,0 +1,32 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Audio Analyzer" icon="" />
+    <ScrollView>
+        <StackLayout class="p-4">
+            <Button text="Import Audio File" tap="{{ onImportTap }}" class="-primary mb-4" />
+            <Label text="{{ selectedFile }}" class="text-lg text-center mb-4" textWrap="true" />
+            
+            <!-- Audio Player -->
+            <GridLayout rows="auto, auto" columns="*, auto, auto" class="mb-4">
+                <Slider row="0" col="0" colSpan="3" value="{{ audioProgress }}" maxValue="100" minValue="0" />
+                <Label row="1" col="0" text="{{ currentTime }}" class="text-center" />
+                <Button row="1" col="1" text="{{ isPlaying ? '⏸️' : '▶️' }}" tap="{{ togglePlayPause }}" class="btn btn-sm" />
+                <Label row="1" col="2" text="{{ duration }}" class="text-center" />
+            </GridLayout>
+
+            <!-- Instrument Tracks -->
+            <Repeater items="{{ tracks }}">
+                <Repeater.itemTemplate>
+                    <GridLayout rows="auto" columns="auto, *, auto, auto" class="mb-2">
+                        <Label col="0" text="{{ name }}" class="text-lg" />
+                        <Slider col="1" value="{{ volume }}" maxValue="100" minValue="0" />
+                        <Button col="2" text="{{ isMuted ? '🔇' : '🔊' }}" tap="{{ toggleMute }}" class="btn btn-sm" />
+                        <Button col="3" text="{{ isSolo ? '🎧' : '👥' }}" tap="{{ toggleSolo }}" class="btn btn-sm" />
+                    </GridLayout>
+                </Repeater.itemTemplate>
+            </Repeater>
+
+            <Button text="Analyze Tracks" tap="{{ onAnalyzeTap }}" class="-primary mt-4" isEnabled="{{ canAnalyze }}" />
+            <Button text="Export Modified Audio" tap="{{ onExportTap }}" class="-primary mt-4" isEnabled="{{ canExport }}" />
+        </StackLayout>
+    </ScrollView>
+</Page>
